@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './signuppage.css';
 import Navbar from '../../components/navbar/Navbar';
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
     const [email, setEmail] = useState('');
@@ -132,7 +133,7 @@ const SignUp = () => {
                 </form>
 
                 <p className="signup-text" style={{ color: "#643843", fontFamily: "Poppins" }}>
-                    Already have an account? <a href="#">Log In</a>
+                    <Link to="/login">Already have an account? <a href="#">Log In</a></Link>
                 </p>
                 <br /><br /><br /><br /><br /><br />
             </div>

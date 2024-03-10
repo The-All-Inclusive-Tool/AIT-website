@@ -12,7 +12,7 @@ const ProjectsPage = () => {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            Authorization: 'Bearer ', // Replace with your GitHub personal access token
+            Authorization: 'Bearer', // Replace with your GitHub personal access token
           },
           body: JSON.stringify({
             query: `

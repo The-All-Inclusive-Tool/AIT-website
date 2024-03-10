@@ -8,25 +8,37 @@ const SignUp = () => {
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
-    const handleLogin = async () => {
+    const handleRegister = async () => {
+        try {
+            const response = await fetch('http://localhost:2020/register', {
+                method: 'POST',
+                body: JSON.stringify({ name, email, password }),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
 
+            if (!response.ok) {
 
-        let result = await fetch(
-            'http://localhost:2020/register', {
-            method: "post",
-            body: JSON.stringify({ name, email, password }),
-            headers: {
-                'Content-Type': 'application/json'
+                console.error('Registration failed');
+
+                return;
             }
-        })
-        result = await result.json();
-        console.warn(result);
-        if (result) {
-            alert("Data saved succesfully");
-            setEmail("");
-            setName("");
+
+            const result = await response.json();
+
+            // Check if the server response contains the expected data
+            if (result) {
+                console.log(result);
+
+
+
+            }
+        } catch (error) {
+            console.error('Error registering user:', error.message);
         }
     };
+
 
     return (
         <>
@@ -71,7 +83,7 @@ const SignUp = () => {
                         </span>
                     </div>
 
-                    <button type="button" className="loginButton" onClick={handleLogin}>
+                    <button type="button" className="loginButton" onClick={handleRegister}>
                         Sign Up
                     </button>
                 </form>

@@ -14,23 +14,29 @@ const Login = () => {
                 headers: {
                     'Content-Type': 'application/json',
 
-                    // fasdfdsafasd dfadf
                 },
                 body: JSON.stringify({ email, password }),
             });
 
+            if (response.status === 401) {
+
+                console.error('Authentication failed: Incorrect email or password');
+
+                return;
+            }
+
             if (!response.ok) {
-                // Handle authentication error
-                console.error('Authentication failed');
+
+                console.error('Authentication failed: Server error');
                 return;
             }
 
             const data = await response.json();
-            // Assuming the server returns user information upon successful login
+
             console.log('User logged in:', data.user);
 
-            // You may also want to redirect the user to another page upon successful login
-            // You can use react-router or any other routing mechanism for this purpose
+
+
         } catch (error) {
             console.error('Error logging in:', error.message);
         }

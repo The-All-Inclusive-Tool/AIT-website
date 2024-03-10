@@ -8,8 +8,9 @@ const HomePage = () => {
         <>
             <Navbar />
             <MiddlePart />
+
         </>
     )
 }
 
-export default HomePage
+export default HomePage;

@@ -3,7 +3,11 @@ import './middlepart.css';
 
 
 
+
 const MiddlePart = () => {
+
+
+
   return (
     <>
       <div className="middlePart">
@@ -24,6 +28,7 @@ const MiddlePart = () => {
           <button className="getStartedButton">Get the extension! 🚀</button>
 
         </center>
+
 
       </div>
     </>

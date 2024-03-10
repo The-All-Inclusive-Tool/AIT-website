@@ -1,0 +1,73 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin-top: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.password-toggle {
+    cursor: pointer;
+    color: blue;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.signup-text {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.signup-text a {
+    color: blue;
+    text-decoration: none;
+}
+
+.loginButton {
+    padding-right: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1.5rem;
+    background: #AC7D88;
+    color: white;
+    font-weight: bold;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    outline: black;
+    box-shadow: 4px 2px 3px black;
+    border-radius: 8px;
+    align-items: center;
+    margin-right: 0rem;
+    transition: 0.2s ease-in-out;
+    margin-bottom: 4rem;
+}

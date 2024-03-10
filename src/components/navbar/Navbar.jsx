@@ -1,5 +1,6 @@
 import React from 'react';
 import './navbar.css';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
@@ -10,7 +11,7 @@ const Navbar = () => {
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                     <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
 
-                        <img src="https://iili.io/JVyRVXj.png" className="h-8" alt="The All Inclusive Tool - AIT logo" />
+                        <Link to="/"><img src="https://iili.io/JVyRVXj.png" className="h-8" alt="The All Inclusive Tool - AIT logo" /></Link>
                         <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white" style={{ fontFamily: "Poppins" }}></span>
                     </a>
                     <button data-collapse-toggle="navbar-default" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
@@ -23,19 +24,19 @@ const Navbar = () => {
                         <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border  rounded-lg  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0  dark:-800 md:dark:-900 dark:border-gray-700">
 
                             <li>
-                                <a href="#" className="">About</a>
+                                <Link to='/about'>About</Link>
                             </li>
                             <li>
-                                <a href="#" className="">Blogs</a>
+                                <Link to='/blogs'>Blogs</Link>
                             </li>
                             <li>
-                                <a href="#" className="">Contributors</a>
+                                <Link to='/contributors'>Contributors</Link>
                             </li>
                             <li>
-                                <a href="#" className="">Projects</a>
+                                <Link to='/open-source-projects'>Projects</Link>
                             </li>
                             <li>
-                                <a href="#"><img src="https://cdn-icons-png.flaticon.com/128/4140/4140061.png" alt="profile logo" width="40px" height="40px" className='' /></a>
+                                <Link to="/profile"><img src="https://cdn-icons-png.flaticon.com/128/4140/4140061.png" alt="profile logo" width="40px" height="40px" className='' /></Link>
                             </li>
                         </ul>
                     </div>

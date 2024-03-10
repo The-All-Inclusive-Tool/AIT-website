@@ -1,6 +1,6 @@
 import React from 'react';
 import './middlepart.css';
-
+import { Link } from 'react-router-dom';
 
 
 
@@ -25,7 +25,7 @@ const MiddlePart = () => {
 
 
         <center>
-          <button className="getStartedButton">Get the extension! 🚀</button>
+          <Link to="/sign-up"> <button className="getStartedButton">Get the extension! 🚀</button></Link>
 
         </center>
 

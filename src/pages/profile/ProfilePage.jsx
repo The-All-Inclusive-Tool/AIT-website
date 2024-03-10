@@ -4,10 +4,10 @@ import './profilepage.css';
 
 const ProfilePage = () => {
     const userData = {
-        username: 'JohnDoe',
+        username: 'Armaan',
         profilePicture: null,
-        githubLink: 'https://github.com/JohnDoe',
-        phoneNumber: '123-456-7890',
+        githubLink: 'https://github.com/0Armaan025',
+        phoneNumber: '',
         peopleHelped: 15,
         inclusiveOptionsTaken: 9,
     };
@@ -44,15 +44,7 @@ const ProfilePage = () => {
                     <br />
                     <h2 style={{ color: '#643843', fontSize: "32px", fontWeight: "bold", fontFamily: "poppins" }}>{editedUserData.username}'s Profile</h2>
 
-                    <div className="profile-picture">
-                        {editedUserData.profilePicture ? (
-                            <img src={editedUserData.profilePicture} alt="Profile" />
-                        ) : (
-                            <div className="profile-picture-placeholder">
-                                <span>+</span>
-                            </div>
-                        )}
-                    </div>
+
 
                     <div className="profile-details">
                         <label style={{ color: '#85586F' }}>Username:</label>
@@ -115,25 +107,7 @@ const ProfilePage = () => {
                     )}
 
                     <br /><br />
-                    <div style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center', maxWidth: '600px', margin: 'auto' }}>
-                        <h3 style={{ color: '#333', fontSize: '24px', marginBottom: '20px' }}>Dashboard</h3>
 
-                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <div style={{ flex: '1', margin: '0 10px', borderRadius: '8px', overflow: 'hidden' }}>
-                                <div style={{ backgroundColor: '#FAD02E', padding: '20px', color: '#85586F' }}>
-                                    <p style={{ margin: '0', fontSize: '18px' }}>People Helped</p>
-                                    <p style={{ margin: '0', fontSize: '24px', fontWeight: 'bold' }}>{editedUserData.peopleHelped}</p>
-                                </div>
-                            </div>
-
-                            <div style={{ flex: '1', margin: '0 10px', borderRadius: '8px', overflow: 'hidden' }}>
-                                <div style={{ backgroundColor: '#4CAF50', padding: '20px', color: '#85586F' }}>
-                                    <p style={{ margin: '0', fontSize: '18px' }}>Inclusive Options Taken</p>
-                                    <p style={{ margin: '0', fontSize: '24px', fontWeight: 'bold' }}>{editedUserData.inclusiveOptionsTaken} times</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <br /><br /><br />
                 </div>
             </center>

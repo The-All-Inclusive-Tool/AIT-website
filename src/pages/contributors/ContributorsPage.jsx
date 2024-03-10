@@ -28,7 +28,7 @@ const ContributorsPage = () => {
         <>
             <Navbar />
             <div style={{ backgroundColor: '#FDF0D1', margin: '0', overflow: 'hidden' }}>
-                <Navbar />
+
                 <center>
                     <h2 style={{ fontSize: '32px', fontWeight: 'bold', fontFamily: 'Poppins', marginBottom: '30px', color: '#643843' }}>
                         Find amazing open-source contributors here!

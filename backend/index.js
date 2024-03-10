@@ -201,6 +201,16 @@ app.get("/get-all-profiles", async (req, res) => {
 
 
 
+// Add this endpoint to fetch all users
+app.get("/get-all-users", async (req, res) => {
+    try {
+        const allUsers = await User.find();
+        res.status(200).json(allUsers);
+    } catch (error) {
+        console.error("Error getting all users:", error.message);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
 
 
 

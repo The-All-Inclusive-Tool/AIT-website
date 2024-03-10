@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/navbar/Navbar';
 import './blogspage.css';
+import { Link } from 'react-router-dom';
 
 const BlogsPage = () => {
     const [blogs, setBlogs] = useState([]);
@@ -37,7 +38,7 @@ const BlogsPage = () => {
                     ))}
                 </div>
 
-                <button className="add-blog-btn">Add Blog</button>
+                <Link to="/add-blog"><button className="add-blog-btn">Add Blog</button></Link>
             </div>
         </>
     );

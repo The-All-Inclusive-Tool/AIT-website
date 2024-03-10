@@ -1,10 +1,12 @@
+import AddBlogForm from "./pages/blogs/AddBlogPage";
+import BlogsPage from "./pages/blogs/BlogsPage";
 import ContributorsPage from "./pages/contributors/ContributorsPage";
-import ForumsPage from "./pages/forums/ForumsPage";
 import HomePage from "./pages/home/HomePage";
 import MiddlePart from "./pages/home/middlePart/MiddlePart";
 import Login from "./pages/login/LoginPage";
 import MakeProfilePage from "./pages/profile/MakeProfilePage";
 import ProfilePage from "./pages/profile/ProfilePage";
+import ProjectsPage from "./pages/projects/ProjectsPage";
 import SignUp from "./pages/signup/SignUp";
 
 
@@ -12,7 +14,7 @@ import SignUp from "./pages/signup/SignUp";
 function App() {
   return (
     <>
-      <ForumsPage />
+      <BlogsPage />
     </>
   );
 }

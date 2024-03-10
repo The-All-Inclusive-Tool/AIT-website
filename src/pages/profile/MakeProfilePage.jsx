@@ -7,7 +7,7 @@ const MakeProfilePage = () => {
 
     // const handleProfileCreation = async () => {
     //     try {
-    //         const response = await fetch('http://localhost:2020/create-profile', {
+    //         const response = await fetch('http://localhost:5000/create-profile', {
     //             method: 'POST',
     //             headers: {
     //                 'Content-Type': 'application/json',

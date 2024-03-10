@@ -4,7 +4,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
 const app = express();
-const PORT = 2020;
+const PORT = 5000;
 const MongooseConnect = "mongodb+srv://armaan:Armaan25@cluster0.dfeplrw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 app.use(cors());
@@ -53,7 +53,7 @@ const userSchema = mongoose.Schema({
         type: Number,
         default: 0,
     },
-    
+
     profileImage: {
         type: String,
     },
@@ -121,7 +121,7 @@ const authenticateUser = async (req, res, next) => {
 // Registration endpoint
 app.post("/register", async (req, res) => {
     try {
-        const { name, email, password , username, githubLink, phoneNumber } = req.body;
+        const { name, email, password, username, githubLink, phoneNumber } = req.body;
 
         if (!name || !email || !password) {
             return res.status(400).json({ error: "Name, email, and password are required" });
@@ -132,7 +132,7 @@ app.post("/register", async (req, res) => {
             await mongoose.connection.db.createCollection('users');
         }
 
-        const newUser = new User({ name, email, password , username, githubLink, phoneNumber});
+        const newUser = new User({ name, email, password, username, githubLink, phoneNumber });
         const savedUser = await newUser.save();
 
         setAuthCookie(res, savedUser._id, savedUser.name);
@@ -175,16 +175,18 @@ app.post("/create-profile", authenticateUser, async (req, res) => {
 });
 
 
-// Get all users and their details
-app.get("/get-all-users", async (req, res) => {
+app.get("/get-all-comments", async (req, res) => {
     try {
-        const allUsers = await User.find();
-        res.status(200).json(allUsers);
+        // Fetch all comments from your database
+        // Replace the following line with your actual logic to fetch comments
+        const allComments = await Comment.find();
+        res.status(200).json(allComments);
     } catch (error) {
-        console.error("Error getting all users:", error.message);
+        console.error("Error getting all comments:", error.message);
         res.status(500).json({ error: "Internal Server Error" });
     }
 });
+
 
 // Get all profiles and their details
 app.get("/get-all-profiles", async (req, res) => {
@@ -196,6 +198,60 @@ app.get("/get-all-profiles", async (req, res) => {
         res.status(500).json({ error: "Internal Server Error" });
     }
 });
+
+
+
+
+
+
+const blogSchema = mongoose.Schema({
+    title: {
+        type: String,
+        required: true,
+    },
+    content: {
+        type: String,
+        required: true,
+    },
+    author: {
+        type: String,
+        required: true,
+    },
+}, { timestamps: true });
+
+const Blog = mongoose.model("Blog", blogSchema);
+
+// Endpoint to store a new blog
+app.post("/store-blog", async (req, res) => {
+    try {
+        const { title, content, author } = req.body;
+
+        if (!title || !content || !author) {
+            return res.status(400).json({ error: "Title, content, and author are required" });
+        }
+
+        const newBlog = new Blog({ title, content, author });
+        const savedBlog = await newBlog.save();
+
+        res.status(201).json(savedBlog);
+    } catch (error) {
+        console.error("Error storing blog:", error.message);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
+
+// Endpoint to retrieve all blogs
+app.get("/get-all-blogs", async (req, res) => {
+    try {
+        const allBlogs = await Blog.find().sort({ createdAt: -1 }); // Sort by creation date, newest first
+        res.status(200).json(allBlogs);
+    } catch (error) {
+        console.error("Error getting all blogs:", error.message);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
 
 
 app.listen(PORT, () => {

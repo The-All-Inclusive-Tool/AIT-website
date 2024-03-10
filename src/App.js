@@ -10,7 +10,7 @@ import SignUp from "./pages/signup/SignUp";
 function App() {
   return (
     <>
-      <HomePage />
+      <MakeProfilePage />
     </>
   );
 }

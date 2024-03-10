@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    background: #FDF0D1;
+}
+
+/* 
+.middlePart {
+    margin-left: 18rem;
+    margin-top: 6rem;
+
+} */
+
+.homeDescriptionText {
+    font-family: "Poppins", sans-serif;
+    font-weight: normal;
+    font-size: 15px;
+    color: #AC7D88;
+    font-style: normal;
+    width: 550px;
+
+}
+
+.homeHeadlineText {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    font-size: 38px;
+    color: #643843;
+    margin-right: 2.8rem;
+    font-style: normal;
+}
+
+.boxes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.leftBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    margin-right: 25rem;
+    margin-left: 5rem;
+}
+
+.rightBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.rightBox img {
+    margin-right: 20rem;
+    height: 18rem;
+    margin-top: 3rem;
+
+    border-radius: 12px;
+
+}
+
+.getStartedButton {
+    padding-right: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1.5rem;
+    background: #AC7D88;
+    color: white;
+    font-weight: bold;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    outline: black;
+    box-shadow: 4px 2px 3px black;
+    border-radius: 8px;
+    align-items: center;
+    margin-right: 62rem;
+    transition: 0.2s ease-in-out;
+    margin-bottom: 4rem;
+}
+
+
+
+.getStartedButton:hover {
+    transform: scale(1.1);
+}
+
+.featureTile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.feature {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.imgBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 12px;
+}
+
+.textBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+li a {
+    background: none;
+}

@@ -8,11 +8,16 @@ const SignUp = () => {
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
+    const [username, setUsername] = useState('');
+    const [githubLink, setGithubLink] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [isProfileCreated, setIsProfileCreated] = useState(false);
+
     const handleRegister = async () => {
         try {
             const response = await fetch('http://localhost:2020/register', {
                 method: 'POST',
-                body: JSON.stringify({ name, email, password }),
+                body: JSON.stringify({ name, email, password, username, githubLink, phoneNumber }),
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -44,10 +49,12 @@ const SignUp = () => {
         <>
             <Navbar />
             <div className="login-container">
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                 <h2 style={{ fontSize: "32px", fontFamily: "Poppins", fontWeight: "bold", color: "#643843", }}>Sign Up</h2>
                 <form className="login-form">
                     <div className="input-group">
-                        <label style={{ fontFamily: "roboto", color: "#643843" }}>Name:</label>
+
+                        <label style={{ fontFamily: "Roboto", color: "#85586F" }}>Name:</label>
                         <input
                             style={{ background: "white", border: "1px solid black" }}
                             type="name"
@@ -56,8 +63,44 @@ const SignUp = () => {
                             onChange={(e) => setName(e.target.value)}
                         />
                     </div>
+
                     <div className="input-group">
-                        <label style={{ fontFamily: "roboto", color: "#643843" }}>Email:</label>
+                        <label style={{ fontFamily: "Roboto", color: "#85586F" }}>Username:</label>
+                        <br />
+                        <input
+                            type="text"
+                            placeholder="Enter your username"
+                            value={username}
+                            style={{ width: "20rem", borderRadius: "6px" }}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+                    </div>
+
+                    <div className="input-group">
+                        <label style={{ fontFamily: "Roboto", color: "#85586F" }}>Github link:</label>
+                        <br />
+                        <input
+                            type="text"
+                            placeholder="Enter your github link"
+                            value={githubLink}
+                            style={{ width: "20rem", borderRadius: "6px" }}
+                            onChange={(e) => setGithubLink(e.target.value)}
+                        />
+                    </div>
+
+                    <div className="input-group">
+                        <label style={{ fontFamily: "Roboto", color: "#85586F" }}>Phone number (OPTIONAL):</label>
+                        <br />
+                        <input
+                            type="text"
+                            placeholder="Enter your phone number"
+                            value={phoneNumber}
+                            style={{ width: "20rem", borderRadius: "6px" }}
+                            onChange={(e) => setPhoneNumber(e.target.value)}
+                        />
+                    </div>
+                    <div className="input-group">
+                        <label style={{ fontFamily: "Roboto", color: "#85586F" }}>Email:</label>
                         <input
                             type="email"
                             placeholder="Enter your email"
@@ -67,7 +110,7 @@ const SignUp = () => {
                     </div>
 
                     <div className="input-group">
-                        <label style={{ fontFamily: "roboto", color: "#643843" }}>Password:</label>
+                        <label style={{ fontFamily: "Roboto", color: "#85586F" }}>Password:</label>
                         <input
                             type={showPassword ? 'text' : 'password'}
                             placeholder="Enter your password"
@@ -91,6 +134,7 @@ const SignUp = () => {
                 <p className="signup-text" style={{ color: "#643843", fontFamily: "Poppins" }}>
                     Already have an account? <a href="#">Log In</a>
                 </p>
+                <br /><br /><br /><br /><br /><br />
             </div>
         </>
     );

@@ -1,3 +1,5 @@
+import ContributorsPage from "./pages/contributors/ContributorsPage";
+import ForumsPage from "./pages/forums/ForumsPage";
 import HomePage from "./pages/home/HomePage";
 import MiddlePart from "./pages/home/middlePart/MiddlePart";
 import Login from "./pages/login/LoginPage";
@@ -10,7 +12,7 @@ import SignUp from "./pages/signup/SignUp";
 function App() {
   return (
     <>
-      <MakeProfilePage />
+      <ForumsPage />
     </>
   );
 }

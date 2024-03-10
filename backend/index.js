@@ -25,6 +25,18 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    username: {
+        type: String,
+        required: true,
+    },
+
+    githubLink: {
+        type: String,
+    },
+    phoneNumber: {
+        type: String,
+    },
+
     peopleHelped: {
         type: Number,
         required: false,
@@ -41,6 +53,7 @@ const userSchema = mongoose.Schema({
         type: Number,
         default: 0,
     },
+    
     profileImage: {
         type: String,
     },
@@ -49,6 +62,9 @@ const userSchema = mongoose.Schema({
 const User = mongoose.model("User", userSchema);
 
 const profileSchema = mongoose.Schema({
+    name: {
+        type: String,
+    },
     username: {
         type: String,
         required: true,
@@ -105,7 +121,7 @@ const authenticateUser = async (req, res, next) => {
 // Registration endpoint
 app.post("/register", async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const { name, email, password , username, githubLink, phoneNumber } = req.body;
 
         if (!name || !email || !password) {
             return res.status(400).json({ error: "Name, email, and password are required" });
@@ -116,7 +132,7 @@ app.post("/register", async (req, res) => {
             await mongoose.connection.db.createCollection('users');
         }
 
-        const newUser = new User({ name, email, password });
+        const newUser = new User({ name, email, password , username, githubLink, phoneNumber});
         const savedUser = await newUser.save();
 
         setAuthCookie(res, savedUser._id, savedUser.name);
@@ -129,7 +145,7 @@ app.post("/register", async (req, res) => {
 });
 
 
-app.post("/create-profile", async (req, res) => {
+app.post("/create-profile", authenticateUser, async (req, res) => {
     try {
         const { username, githubLink, phoneNumber } = req.body;
 
@@ -137,30 +153,49 @@ app.post("/create-profile", async (req, res) => {
             return res.status(400).json({ error: "Username is required" });
         }
 
-        const existingProfile = await Profile.findOne({ username });
-        if (existingProfile) {
-            return res.status(400).json({ error: "Profile with this username already exists" });
+        // Check if the profile already exists for the authenticated user
+        if (req.user.profile) {
+            return res.status(400).json({ error: "Profile already exists for this user" });
         }
 
-        const newProfile = new Profile({
+        // Create or update the profile information in the user document
+        req.user.profile = {
             username,
             githubLink,
             phoneNumber,
-        });
+        };
 
-        const savedProfile = await newProfile.save();
-
-        // Assuming you want to associate the profile with the authenticated user
-        req.user.profile = savedProfile._id;
         await req.user.save();
 
-        res.status(201).json(savedProfile);
+        res.status(201).json(req.user.profile);
     } catch (error) {
-        console.error("Error creating profile:", error.message);
+        console.error("Error creating/updating profile:", error.message);
         res.status(500).json({ error: "Internal Server Error" });
     }
 });
 
+
+// Get all users and their details
+app.get("/get-all-users", async (req, res) => {
+    try {
+        const allUsers = await User.find();
+        res.status(200).json(allUsers);
+    } catch (error) {
+        console.error("Error getting all users:", error.message);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
+// Get all profiles and their details
+app.get("/get-all-profiles", async (req, res) => {
+    try {
+        const allProfiles = await Profile.find();
+        res.status(200).json(allProfiles);
+    } catch (error) {
+        console.error("Error getting all profiles:", error.message);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
 
 
 app.listen(PORT, () => {
